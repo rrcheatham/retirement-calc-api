@@ -2,6 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 const {User} = require('./models');
+const {InputData} = require('../inputs');
+const {createDefaultInputs} = require('./createDefaultInputs');
 
 const router = express.Router();
 
@@ -110,6 +112,8 @@ router.post('/', jsonParser, (req, res) => {
             });
         })
         .then(user => {
+            //creates intial input values for display on dashboard
+            InputData.insertMany(createDefaultInputs(email));
             return res.status(201).json(user.serialize());
         })
         .catch(err => {
