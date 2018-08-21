@@ -11,7 +11,7 @@ router.use(bodyParser.json());
 
 router.get('/', jwtAuth, (req, res) => {
     InputData
-        .find({email: req.query.email})
+        .find({username: req.query.email})
         .then(inputs => {
             res.json({
                 inputs: inputs.map(
