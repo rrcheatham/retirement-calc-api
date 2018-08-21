@@ -39,11 +39,11 @@ describe('Protected endpoint', function () {
     return User.remove({});
   });
 
-  describe('/inputs', function () {
+  describe('/api/inputs', function () {
     it('Should reject requests with no credentials', function () {
       return chai
         .request(app)
-        .get('/inputs')
+        .get('/api/inputs')
         .then(() =>
           expect.fail(null, null, 'Request should not succeed')
         )
@@ -73,7 +73,7 @@ describe('Protected endpoint', function () {
 
       return chai
         .request(app)
-        .get('/inputs')
+        .get('/api/inputs')
         .set('Authorization', `Bearer ${token}`)
         .then(() =>
           expect.fail(null, null, 'Request should not succeed')
@@ -106,7 +106,7 @@ describe('Protected endpoint', function () {
 
       return chai
         .request(app)
-        .get('/inputs')
+        .get('/api/inputs')
         .set('authorization', `Bearer ${token}`)
         .then(() =>
           expect.fail(null, null, 'Request should not succeed')
@@ -139,7 +139,7 @@ describe('Protected endpoint', function () {
 
       return chai
         .request(app)
-        .get('/inputs')
+        .get('/api/inputs')
         .set('authorization', `Bearer ${token}`)
         .then(res => {
           expect(res).to.have.status(200);

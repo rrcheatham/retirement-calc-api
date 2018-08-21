@@ -42,7 +42,7 @@ passport.use(jwtStrategy);
 
 app.use('/api/users/', usersRouter);
 app.use('/api/auth/', authRouter);
-app.use('/inputs/', inputsRouter);
+app.use('/api/inputs/', inputsRouter);
 
 app.get('/logout', (req, res) => {
     req.logout();
